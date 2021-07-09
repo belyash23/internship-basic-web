@@ -4,8 +4,8 @@ namespace app\views;
 
 class View
 {
-    public function render($view)
+    public function render($view, $data, $template='baseTemplate.php')
     {
-        require_once($view);
+        require_once($template);
     }
 }
