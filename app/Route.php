@@ -7,7 +7,6 @@ class Route
 {
     public static $defaultControllerName = 'site';
     public static $defaultControllerAction = 'signup';
-    public static $controllersFolder = 'app/controllers';
 
     static function start()
     {
@@ -27,7 +26,7 @@ class Route
         }
 
         $controller = new $controllerName;
-        echo $controller->$controllerAction();
+        $controller->$controllerAction();
     }
 
     static function formatControllerName($controllerName)
