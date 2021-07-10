@@ -16,13 +16,8 @@ class User extends Model
         } elseif (!filter_var($this->data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Введите валидный адрес электронной почты';
         } else {
-            $query = $this->pdo->prepare('SELECT * FROM user WHERE email = :email');
-            $query->execute(
-                [
-                    'email' => $this->data['email']
-                ]
-            );
-            if ($query->fetch()) {
+            $user = $this->getByEmail();
+            if ($user) {
                 $errors['email'] = 'Пользователь с данным адресом электронной почты уже зарегистрирован';
             }
         }
@@ -34,8 +29,26 @@ class User extends Model
         return $errors;
     }
 
-    public function save() {
+    public function save()
+    {
         $this->data['password'] = password_hash($this->data['password'], PASSWORD_BCRYPT);
         return parent::save();
+    }
+
+    public function validatePassword()
+    {
+        $user = $this->getByEmail();
+        return password_verify($this->data['password'], $user['password']);
+    }
+
+    public function getByEmail()
+    {
+        $query = $this->pdo->prepare('SELECT * FROM user WHERE email = :email');
+        $query->execute(
+            [
+                'email' => $this->data['email']
+            ]
+        );
+        return $query->fetch();
     }
 }
