@@ -5,7 +5,6 @@ namespace app;
 class Route
 {
     public static $defaultControllerName = 'site';
-    public static $defaultControllerAction = 'signup';
 
     static function start()
     {
@@ -18,7 +17,6 @@ class Route
 
         if (!class_exists($controllerName)) {
             $controllerName = self::formatControllerName(self::$defaultControllerName);
-            $controllerAction = self::formatControllerAction(self::$defaultControllerAction);
         }
         if (!method_exists($controllerName, $controllerAction)) {
             $controllerAction = self::formatControllerAction('index');

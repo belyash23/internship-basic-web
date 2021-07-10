@@ -1,3 +1,9 @@
 .form-container {
     max-width: 300px;
 }
+.form-title {
+    margin-bottom: 40px;
+}
+.form-message {
+    margin-top: 20px;
+}
