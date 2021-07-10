@@ -12,7 +12,7 @@
         <div class="text-danger"><?= $data['errors']['password'] ?></div>
     </div>
 
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-primary" value="Отправить">
     <?php
     if ($data['success']) {
         echo '<div class="text-success form-message">Вы успешно зарегистрировались</div>';
