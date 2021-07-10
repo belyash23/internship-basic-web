@@ -13,11 +13,13 @@ class Route
         $controllerAction = !empty($routes[3]) ? $routes[3] : 'index';
 
         $controllerName = self::formatControllerName($controllerName);
-        $controllerAction = self::formatControllerAction($controllerAction);
-
         if (!class_exists($controllerName)) {
+            $controllerAction = $routes[2];
             $controllerName = self::formatControllerName(self::$defaultControllerName);
+
         }
+
+        $controllerAction = self::formatControllerAction($controllerAction);
         if (!method_exists($controllerName, $controllerAction)) {
             $controllerAction = self::formatControllerAction('index');
         }
