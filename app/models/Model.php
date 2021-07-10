@@ -12,7 +12,7 @@ class Model
 
     public function __construct()
     {
-        require_once('app/config.php');
+        require('app/config.php');
         $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
         $user = $config['db']['user'];
         $password = $config['db']['password'];
