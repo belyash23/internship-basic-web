@@ -17,9 +17,16 @@ require('app/config.php');
 <body>
 <header class="navbar navbar-default">
     <ul class="nav navbar-nav pull-right">
-        <li><a href="<?= $config['baseUrl'] ?>signup">Регистрация</a></li>
-        <li><a href="<?= $config['baseUrl'] ?>signin">Авторизация</a></li>
-        <li><a href="<?= $config['baseUrl'] ?>feedback/create">Обратная связь</a></li>
+        <?php
+        if (\app\controllers\Site::isAuthed()) {
+            echo '<li><a href="' . $config['baseUrl'] . 'feedback/create">Обратная связь</a></li>';
+            echo '<li><a href="' . $config['baseUrl'] . 'signout">Выйти</a></li>';
+        } else {
+            echo '<li><a href="' . $config['baseUrl'] . 'signup">Регистрация</a></li>';
+            echo '<li><a href="' . $config['baseUrl'] . 'signin">Аторизация</a></li>';
+        }
+        ?>
+
     </ul>
 </header>
 <main>

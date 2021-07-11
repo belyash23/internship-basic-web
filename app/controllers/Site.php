@@ -72,6 +72,12 @@ class Site extends Controller
         );
     }
 
+    public function actionSignout()
+    {
+        unset($_SESSION['isAuthed']);
+        header('Location: signin');
+    }
+
     public static function auth($email, $password)
     {
         $_SESSION['isAuthed'] = true;
