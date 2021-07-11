@@ -1,6 +1,7 @@
 <?php
 
-require_once('app/config.php');
+require('app/config.php');
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,7 +19,7 @@ require_once('app/config.php');
     <ul class="nav navbar-nav pull-right">
         <li><a href="<?= $config['baseUrl'] ?>signup">Регистрация</a></li>
         <li><a href="<?= $config['baseUrl'] ?>signin">Авторизация</a></li>
-        <li><a href="">Обратная связь</a></li>
+        <li><a href="<?= $config['baseUrl'] ?>feedback/create">Обратная связь</a></li>
     </ul>
 </header>
 <main>
