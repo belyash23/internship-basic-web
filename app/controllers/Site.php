@@ -57,8 +57,8 @@ class Site extends Controller
 
             if (!$errors) {
                 $success = true;
-                header("Refresh:1; url=form/create");
-                $this->auth($email, $password);
+                header("Refresh:1; url=feedback/create");
+                self::auth($email, $password);
             }
         }
 
@@ -72,10 +72,13 @@ class Site extends Controller
         );
     }
 
-    public function auth($email, $password)
+    public static function auth($email, $password)
     {
-        session_start();
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
+        $_SESSION['isAuthed'] = true;
+    }
+
+    public static function isAuthed()
+    {
+        return isset($_SESSION['isAuthed']) ?? false;
     }
 }
